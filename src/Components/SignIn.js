@@ -12,6 +12,14 @@ const margin = {
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const greyBorderColor = 'rgb(48, 48, 48)';
+	const redBorderColor = 'rgba(228, 81, 81, 0.781)';
+	const greenBorderColor = ' rgba(49, 255, 49, 0.507)';
+
+  const [emailBorderColor, setEmailBorderColor] = useState(greyBorderColor);
+  const [passwordBoderColor, setPasswordBorderolor] = useState(greyBorderColor);
+
   
   useEffect(() =>{
     if (localStorage.saveEmail) {
@@ -45,12 +53,9 @@ const SignIn = () => {
     setEmail(e.target.value);
     const regexEmail = /(^[^\s@]{3,})+(@[^\s@]{2,})+(\.[^\s@]{2,})+$/;
     if (!regexEmail.test(String(e.target.value).toLowerCase())){
-      const borderEmail = document.querySelector("#email")
-      borderEmail.classList.add('red');
+      setEmailBorderColor(redBorderColor);
     } else {
-      const borderEmail = document.querySelector("#email")
-      borderEmail.classList.remove('red');
-      borderEmail.classList.add('green');
+      setEmailBorderColor(greenBorderColor);
     }
   };
 
@@ -58,17 +63,14 @@ const SignIn = () => {
     setPassword(e.target.value);
     const regexPassword = (/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/);
     if (!e.target.value.match(regexPassword)) {
-      const borderEmail = document.querySelector("#password")
-      borderEmail.classList.add('red');
+      setPasswordBorderolor(redBorderColor);
     } else {
-      const borderEmail = document.querySelector("#password")
-      borderEmail.classList.remove('red');
-      borderEmail.classList.add('green');
+      setPasswordBorderolor(greenBorderColor);
     }
   };
 
-  const cleareLocal = () => {
-    localStorage.clear();
+  const clearLocal = () => {
+    localStorage.clear()
   }
 
     return( 
@@ -84,6 +86,7 @@ const SignIn = () => {
           placeholder="Email Address"
           value={email}
           onChange={emailHandler}
+          borderColor={emailBorderColor}
         />
         <br/>
         <Input
@@ -91,6 +94,7 @@ const SignIn = () => {
           type="password"
           placeholder="Password"
           onChange={passwordHandler}
+          borderColor={passwordBoderColor}
         />
         <br/>
         <BoxCheck><input
@@ -100,10 +104,10 @@ const SignIn = () => {
         <Button type="submit" onClick={chekingInput}>SIGN IN</Button>
       </form>
       <div className="link" style={margin}>Forgot password?</div>
-      <Link className="link" to="/sign-up" onClick={cleareLocal}>Don't have an account? Sign Up</Link>
+      <Link className="link" to="/test/sign-up" onClick={clearLocal}>Don't have an account? Sign Up</Link>
       <Copyright>Copyright 	&copy; Your Website 2021.</Copyright>
       <Switch>
-        <Route path="/sign-up" component={SignUp}/>
+        <Route path="/test/sign-up" component={SignUp}/>
       </Switch>
     </ManeBox>
     )

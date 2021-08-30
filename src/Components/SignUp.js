@@ -11,27 +11,30 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const greyBorderColor = 'rgb(48, 48, 48)';
+	const redBorderColor = 'rgba(228, 81, 81, 0.781)';
+	const greenBorderColor = ' rgba(49, 255, 49, 0.507)';
+
+  const [firstNameBorderColor, setFirstNameBorderColor] = useState(greyBorderColor);
+  const [lastNameBorderColor, setLastNameBorderColor] = useState(greyBorderColor);
+  const [emailBorderColor, setEmailBorderColor] = useState(greyBorderColor);
+  const [passwordBoderColor, setPasswordBorderolor] = useState(greyBorderColor);
+
   const firstNameHandler = (e) => {
     setFirstName(e.target.value);
     if(String(e.target.value).length < 3) {
-      const borderFirstName = document.querySelector("#firstName")
-      borderFirstName.classList.add('red');
+      setFirstNameBorderColor(redBorderColor);
     } else {
-      const borderFirstName = document.querySelector("#firstName")
-      borderFirstName.classList.remove('red');
-      borderFirstName.classList.add('green');
+      setFirstNameBorderColor(greenBorderColor);
     }
   };
 
   const lastNameHandler = (e) => {
     setLastName(e.target.value);
     if(String(e.target.value).length < 3) {
-      const borderLastName = document.querySelector("#lastName")
-      borderLastName.classList.add('red');
+      setLastNameBorderColor(redBorderColor);
     } else {
-      const borderLastName = document.querySelector("#lastName")
-      borderLastName.classList.remove('red');
-      borderLastName.classList.add('green');
+      setLastNameBorderColor(greenBorderColor);
     }
   };
 
@@ -39,12 +42,9 @@ const SignUp = () => {
     setEmail(e.target.value);
     const regexEmail = /(^[^\s@]{3,})+(@[^\s@]{2,})+(\.[^\s@]{2,})+$/;
     if (!regexEmail.test(String(e.target.value).toLowerCase())){
-      const borderEmail = document.querySelector("#email")
-      borderEmail.classList.add('red');
+      setEmailBorderColor(redBorderColor);
     } else {
-      const borderEmail = document.querySelector("#email")
-      borderEmail.classList.remove('red');
-      borderEmail.classList.add('green');
+      setEmailBorderColor(greenBorderColor);
     }
   };
 
@@ -52,12 +52,9 @@ const SignUp = () => {
     setPassword(e.target.value);
     const regexPassword = (/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/);
     if (!e.target.value.match(regexPassword)) {
-      const borderEmail = document.querySelector("#password")
-      borderEmail.classList.add('red');
+      setPasswordBorderolor(redBorderColor);
     } else {
-      const borderEmail = document.querySelector("#password")
-      borderEmail.classList.remove('red');
-      borderEmail.classList.add('green');
+      setPasswordBorderolor(greenBorderColor);
     }
   };
 
@@ -87,6 +84,7 @@ const SignUp = () => {
           placeholder="First Name"
           value={FirstName}
           onChange={firstNameHandler}
+          borderColor={firstNameBorderColor}
         />
         <Input names
           id="lastName"
@@ -94,6 +92,7 @@ const SignUp = () => {
           placeholder="Last Name"
           value={LastName}
           onChange={lastNameHandler}
+          borderColor={lastNameBorderColor}
         />
         <Input 
           id="email"
@@ -101,6 +100,7 @@ const SignUp = () => {
           placeholder="Email Address"
           value={email}
           onChange={emailHandler}
+          borderColor={emailBorderColor}
         />
         <br/>
         <Input
@@ -109,6 +109,7 @@ const SignUp = () => {
           placeholder="Password"
           value={password}
           onChange={passwordHandler}
+          borderColor={passwordBoderColor}
         />
         <br/>
         <BoxCheck><input
@@ -118,10 +119,10 @@ const SignUp = () => {
         <br/>
         <Button onClick={saveInLocal}>SIGN UP</Button>
       </form> 
-      <Link className="link" to="/sign-in">Already have an account? Sign In</Link>
+      <Link className="link" to="/test/sign-in">Already have an account? Sign In</Link>
       <Copyright>Copyright 	&copy; Your Website 2021.</Copyright>
       <Switch>
-        <Route exact path="/sign-in" component={SignIn}/>
+        <Route exact path="/test/sign-in" component={SignIn}/>
       </Switch>
     </ManeBox>
     )

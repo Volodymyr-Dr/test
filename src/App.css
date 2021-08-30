@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: black;
 }
 
 
@@ -31,11 +32,4 @@ body {
   color:khaki;
   margin: 10px;
   padding: 5px;
-}
-
-input.green {
-  border:1px solid rgba(49, 255, 49, 0.507);
-}
-input.red {
-  border:1px solid rgba(228, 81, 81, 0.781);
 }

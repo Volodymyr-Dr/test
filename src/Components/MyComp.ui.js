@@ -15,6 +15,7 @@ height: 2rem;
 outline: none;
 background-color: black;
 border: 1px solid gray;
+border-color: ${({ borderColor }) => borderColor};
 border-radius: 3px;
 color: white;
 width: ${props => props.names ? "8.5rem" : "18rem"};
