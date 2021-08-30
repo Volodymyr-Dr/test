@@ -104,10 +104,10 @@ const SignIn = () => {
         <Button type="submit" onClick={chekingInput}>SIGN IN</Button>
       </form>
       <div className="link" style={margin}>Forgot password?</div>
-      <Link className="link" to="/test/sign-up" onClick={clearLocal}>Don't have an account? Sign Up</Link>
+      <Link className="link" to="/test/" onClick={clearLocal}>Don't have an account? Sign Up</Link>
       <Copyright>Copyright 	&copy; Your Website 2021.</Copyright>
       <Switch>
-        <Route path="/test/sign-up" component={SignUp}/>
+        <Route path="/test/" component={SignUp}/>
       </Switch>
     </ManeBox>
     )
