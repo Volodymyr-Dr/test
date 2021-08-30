@@ -68,7 +68,7 @@ const SignUp = () => {
   const authorized = localStorage.getItem('email')
   if (authorized) {
     alert('Ви зареєстровані!')
-    return <Redirect  to="/sign-in"/>
+    return <Redirect  to="/test/sign-in"/>
   }
 
     return( 
@@ -119,10 +119,10 @@ const SignUp = () => {
         <br/>
         <Button onClick={saveInLocal}>SIGN UP</Button>
       </form> 
-      <Link className="link" to="/sign-in">Already have an account? Sign In</Link>
+      <Link className="link" to="/test/sign-in">Already have an account? Sign In</Link>
       <Copyright>Copyright 	&copy; Your Website 2021.</Copyright>
       <Switch>
-        <Route exact path="/sign-in" component={SignIn}/>
+        <Route exact path="/test/sign-in" component={SignIn}/>
       </Switch>
     </ManeBox>
     )
